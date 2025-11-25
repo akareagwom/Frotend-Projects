@@ -12,7 +12,7 @@ const Upload =()=>{
                 </div>
                     <h1>Upload your file</h1>
                     <p>Drag and drop a file or browse</p>
-                    <Button/>
+                    <Button />
                 </div>
 
             </div>
