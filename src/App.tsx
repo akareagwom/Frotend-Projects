@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <div className="bg-red-400">
+      <div className="flex flex-col justify-center items-center ">
         <Upload/>
       </div>
     </>
