@@ -3,9 +3,9 @@ import Button from "./components/Button";
 
 const Upload = () => {
   return (
-    <div className="bg-white shadow p-4 w-[60%]">
+    <div className="bg-white rounded-[10px] shadow p-8 w-[55%]">
       <div className="flex justify-between ">
-        <div className="bg-gray-200 flex w-[300px] flex-col justify-center p-4 items-center rounded-sm">
+        <div className="bg-gray-200 flex w-[300px] flex-col justify-center p-4 items-center rounded-[10px]">
           <div className="text-blue-400 text-6xl">
             <FaFile />
             {/* <input type="file" name="" id="" /> */}
@@ -15,23 +15,23 @@ const Upload = () => {
           <Button text="Browser" />
         </div>
         {/* editing */}
-        <div className="">
-            <div className="bg-gray-200 w-[300px] h-[200px]">hola</div>
+        <div className="text-start w-[250px]">
+            <div className="bg-gray-200 rounded-[10px] h-[200px]">hola</div>
             <p>hello</p>
-            <form className="py-2">
+            <form className="py-2 ">
                 <label>File Editing</label>
                 <input type="text" name="" id="" />
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between  items-center">
                     <div className="">
                         <label htmlFor="">File format</label>
-                        <p className="p-1 border-1 border-black rounded-sm">tmz.jpg</p>
+                        <p className="p-1 border-1 border-gray-300 rounded-[10px] text-center w-[100px] ">tmz.jpg</p>
                     </div>
                      <div className="">
                         <label htmlFor="">File size</label>
-                        <p className="p-1 border-1 border-black rounded-sm">3.4 MB</p>
+                        <p className="p-1 border-1 border-gray-300 rounded-[10px] text-center w-[100px] ">3.4 MB</p>
                     </div>
                 </div>
-                <Button text="Save" className="w-[300px]" />
+                <Button text="Save" className="w-[250px] mt-4" />
             </form>
         </div>
       </div>
