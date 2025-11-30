@@ -1,7 +1,14 @@
 import { FaFile } from "react-icons/fa6";
 import Button from "./components/Button";
+import { useRef } from "react";
 
 const Upload = () => {
+  const uploadref= useRef<HTMLInputElement | null>(null);
+
+  const handleFile =()=>{
+    uploadref.current?.click();
+  }
+
   return (
     <div className="bg-white rounded-[10px] shadow p-8 w-[55%]">
       <div className="flex justify-between ">
@@ -12,7 +19,7 @@ const Upload = () => {
           </div>
           <h1>Upload your file</h1>
           <p>Drag and drop a file or browse</p>
-          <Button text="Browser" />
+          <Button onClick={handleFile}  text="Browser" />
         </div>
         {/* editing */}
         <div className="text-start w-[250px]">
