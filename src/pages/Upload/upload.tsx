@@ -1,29 +1,25 @@
 import { FaFile } from "react-icons/fa6";
 import Button from "./components/Button";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const Upload = () => {
-  const uploadref = useRef<HTMLInputElement | null>(null);
+  const fileRef = useRef<HTMLInputElement | null>(null);
+  const [preview, setPreview] = useState<string | null>(null);
 
-  const handleFile = () => {
-    uploadref.current?.click();
+  const handleButtonClick = () => {
+    fileRef.current?.click(); // open file dialog
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    console.log("Selected file:", file);
-
-    // Example: image preview
-    const previewURL = URL.createObjectURL(file);
-    console.log("Preview URL:", previewURL);
-
-    // Example: validation
-    if (file.size > 2 * 1024 * 1024) {
-      alert("File is too large (max 2MB)");
-    }
+    const imageURL = URL.createObjectURL(file);
+    setPreview(imageURL); // display image preview
   };
+
+
+  
 
   return (
     <div className="bg-white rounded-[10px] shadow p-8 w-[55%]">
@@ -34,28 +30,34 @@ const Upload = () => {
           </div>
           <h1>Upload your file</h1>
           <p>Drag and drop a file or browse</p>
-          <Button onClick={handleFile} text="Browser" />
+          <Button onClick={handleButtonClick} text="Browser" />
+          <button onClick={handleButtonClick}>click</button>
         </div>
         {/* editing */}
         <div className="text-start w-[250px]">
-          <div className="bg-gray-200 rounded-[10px] h-[200px]">
-            <input
-              type="file"
-              name=""
-              id=""
-              className="hidden"
-              ref={uploadref}
-              onChange={handleFileChange}
-              accept="image/*"
-            />
-          </div>
+          <input
+            type="file"
+            name=""
+            id=""
+            className="hidden"
+            ref={fileRef}
+            onChange={handleFileChange}
+            accept="image/*"
+          />
+          {preview&&(
+            <div className="bg-gray-200 rounded-[10px] h-[200px]">
+              <img src={preview} >
+              </img>
+
+            </div>
+          )}
           <p>hello</p>
-          <form className="py-2 ">
+          <form id="file" className="py-2 ">
             <label>File Editing</label>
             <input type="text" name="" id="" />
             <div className="flex justify-between  items-center">
               <div className="">
-                <label htmlFor="">File format</label>
+                <label htmlFor="File format">File format</label>
                 <p className="p-1 border-1 border-gray-300 rounded-[10px] text-center w-[100px] ">
                   tmz.jpg
                 </p>
