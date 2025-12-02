@@ -5,6 +5,8 @@ import { useRef, useState } from "react";
 const Upload = () => {
   const fileRef = useRef<HTMLInputElement | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
+  const [fileName, setFileName] = useState<string>("");
+  const [fileSize, setFileSize] = useState<string>("");
 
   const handleButtonClick = () => {
     fileRef.current?.click(); // open file dialog
@@ -16,6 +18,9 @@ const Upload = () => {
 
     const imageURL = URL.createObjectURL(file);
     setPreview(imageURL); // display image preview
+    
+    setFileName(file.name)
+    setFileSize((file.size/(1024*1024)).toFixed(2) + "MB")
   };
 
 
@@ -31,7 +36,6 @@ const Upload = () => {
           <h1>Upload your file</h1>
           <p>Drag and drop a file or browse</p>
           <Button onClick={handleButtonClick} text="Browser" />
-          <button onClick={handleButtonClick}>click</button>
         </div>
         {/* editing */}
         <div className="text-start w-[250px]">
@@ -45,9 +49,9 @@ const Upload = () => {
             accept="image/*"
           />
           {preview&&(
-            <div className="bg-gray-200 rounded-[10px] h-[200px]">
-              <img src={preview} >
-              </img>
+            <div >
+              <img className="bg-gray-200 w-[250px] object-fit rounded-[10px] h-[200px]" src={preview} />
+             
 
             </div>
           )}
@@ -59,13 +63,13 @@ const Upload = () => {
               <div className="">
                 <label htmlFor="File format">File format</label>
                 <p className="p-1 border-1 border-gray-300 rounded-[10px] text-center w-[100px] ">
-                  tmz.jpg
+                  {fileName}
                 </p>
               </div>
               <div className="">
                 <label htmlFor="">File size</label>
                 <p className="p-1 border-1 border-gray-300 rounded-[10px] text-center w-[100px] ">
-                  3.4 MB
+                  {fileSize}
                 </p>
               </div>
             </div>
