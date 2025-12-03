@@ -24,6 +24,8 @@ const Upload = () => {
   };
 
 
+  // drag and drop section
+
   
 
   return (
