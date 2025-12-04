@@ -12,21 +12,30 @@ const Upload = () => {
     fileRef.current?.click(); // open file dialog
   };
 
+  const handleFileSelect=(file:File)=>{
+    
+    const imageURL = URL.createObjectURL(file);
+    setPreview(imageURL); // display image preview
+
+    setFileName(file.name);
+    setFileSize((file.size / (1024 * 1024)).toFixed(2) + "MB");
+  }
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-
-    const imageURL = URL.createObjectURL(file);
-    setPreview(imageURL); // display image preview
-    
-    setFileName(file.name)
-    setFileSize((file.size/(1024*1024)).toFixed(2) + "MB")
+    handleFileSelect(file);
   };
 
-
   // drag and drop section
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files?.[0];
+    if (file) handleFileSelect(file);
+  };
 
-  
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="bg-white rounded-[10px] shadow p-8 w-[55%]">
@@ -50,11 +59,12 @@ const Upload = () => {
             onChange={handleFileChange}
             accept="image/*"
           />
-          {preview&&(
-            <div >
-              <img className="bg-gray-200 w-[250px] object-fit rounded-[10px] h-[200px]" src={preview} />
-             
-
+          {preview && (
+            <div>
+              <img
+                className="bg-gray-200 w-[250px] object-fit rounded-[10px] h-[200px]"
+                src={preview}
+              />
             </div>
           )}
           <p>hello</p>
