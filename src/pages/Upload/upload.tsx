@@ -40,7 +40,11 @@ const Upload = () => {
   return (
     <div className="bg-white rounded-[10px] shadow p-8 w-[55%]">
       <div className="flex justify-between ">
-        <div className="bg-gray-200 flex w-[300px] flex-col justify-center p-4 items-center rounded-[10px]">
+        <div
+        onClick={handleButtonClick}
+        onDrop={handleDrop}
+        onDragOver={handleDragOver}
+         className="bg-gray-200 flex w-[300px] flex-col justify-center p-4 items-center rounded-[10px]">
           <div className="text-blue-400 text-6xl">
             <FaFile />
           </div>
@@ -67,7 +71,7 @@ const Upload = () => {
               />
             </div>
           )}
-          <p>hello</p>
+          <p className="text-2xl bold">{fileName || "No File"}</p>
           <form id="file" className="py-2 ">
             <label>File Editing</label>
             <input type="text" name="" id="" />
@@ -75,13 +79,13 @@ const Upload = () => {
               <div className="">
                 <label htmlFor="File format">File format</label>
                 <p className="p-1 border-1 border-gray-300 rounded-[10px] text-center w-[100px] ">
-                  {fileName}
+                  {fileName|| "No file"}
                 </p>
               </div>
               <div className="">
                 <label htmlFor="">File size</label>
                 <p className="p-1 border-1 border-gray-300 rounded-[10px] text-center w-[100px] ">
-                  {fileSize}
+                  {fileSize|| "0 MB"}
                 </p>
               </div>
             </div>
