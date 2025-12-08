@@ -2,7 +2,7 @@
 
 function Audio() {
   return (
-    <div>
+    <div className="bg-brown-400">
       hola
     </div>
   )
