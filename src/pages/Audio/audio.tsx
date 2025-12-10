@@ -2,8 +2,8 @@
 
 function Audio() {
   return (
-    <div className="bg-brown-400">
-      hola
+    <div className="bg-[#1C1E26] m-0 h-[100vh] w-full">
+      <div className="flex"></div>
     </div>
   )
 }
